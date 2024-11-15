@@ -5052,6 +5052,18 @@ github.com/gardener/gardener/pkg/apis/core/v1beta1.MachineUpdateStrategy
 <p>UpdateStrategy specifies the machine update strategy for the worker pool.</p>
 </td>
 </tr>
+<tr>
+<td>
+<code>secureBoot</code></br>
+<em>
+bool
+</em>
+</td>
+<td>
+<em>(Optional)</em>
+<p>SecureBoot specifies if the machines in a worker pool should be booted in secureboot mode</p>
+</td>
+</tr>
 </tbody>
 </table>
 <h3 id="extensions.gardener.cloud/v1alpha1.WorkerSpec">WorkerSpec

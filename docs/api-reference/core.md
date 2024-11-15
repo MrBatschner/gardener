@@ -7782,6 +7782,18 @@ string
 <p>Architecture is CPU architecture of machines in this worker pool.</p>
 </td>
 </tr>
+<tr>
+<td>
+<code>secureboot</code></br>
+<em>
+bool
+</em>
+</td>
+<td>
+<em>(Optional)</em>
+<p>Secureboot boots the machine in Secure boot mode</p>
+</td>
+</tr>
 </tbody>
 </table>
 <h3 id="core.gardener.cloud/v1beta1.MachineControllerManagerSettings">MachineControllerManagerSettings
@@ -8027,6 +8039,19 @@ InPlaceUpdates
 <p>InPlaceUpdates contains the configuration for in-place updates for this machine image version.</p>
 </td>
 </tr>
+<tr>
+<td>
+<code>secureBoot</code></br>
+<em>
+bool
+</em>
+</td>
+<td>
+<em>(Optional)</em>
+<p>SecureBoot specifies if a MachineImageVersion offers secure boot enabled images
+HACK: this is a hack to substitute MachineImageCapabilities (GEP-33)</p>
+</td>
+</tr>
 </tbody>
 </table>
 <h3 id="core.gardener.cloud/v1beta1.MachineType">MachineType
@@ -8133,6 +8158,19 @@ string
 <td>
 <em>(Optional)</em>
 <p>Architecture is the CPU architecture of this machine type.</p>
+</td>
+</tr>
+<tr>
+<td>
+<code>secureBoot</code></br>
+<em>
+bool
+</em>
+</td>
+<td>
+<em>(Optional)</em>
+<p>SecureBoot specifies if a MachineType is secure boot enabled.
+HACK: this is a hack to substitute MachineImageCapabilities (GEP-33)</p>
 </td>
 </tr>
 </tbody>

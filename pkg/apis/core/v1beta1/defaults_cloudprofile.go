@@ -31,6 +31,9 @@ func SetDefaults_MachineImageVersion(obj *MachineImageVersion) {
 	if len(obj.Architectures) == 0 {
 		obj.Architectures = []string{v1beta1constants.ArchitectureAMD64}
 	}
+	if obj.SecureBoot == nil {
+		obj.SecureBoot = ptr.To(false)
+	}
 }
 
 // SetDefaults_MachineType sets default values for MachineType objects.
@@ -41,6 +44,9 @@ func SetDefaults_MachineType(obj *MachineType) {
 
 	if obj.Usable == nil {
 		obj.Usable = ptr.To(true)
+	}
+	if obj.SecureBoot == nil {
+		obj.SecureBoot = ptr.To(false)
 	}
 }
 

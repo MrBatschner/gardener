@@ -598,6 +598,10 @@ spec:
                         for the worker pool.
                       type: object
                       x-kubernetes-preserve-unknown-fields: true
+                    secureBoot:
+                      description: SecureBoot specifies if the machines in a worker
+                        pool should be booted in secureboot mode
+                      type: boolean
                     taints:
                       description: Taints is a list of taints for all the `Node` objects
                         in this worker pool.

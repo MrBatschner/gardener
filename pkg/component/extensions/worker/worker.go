@@ -70,6 +70,8 @@ type Values struct {
 	KubernetesVersion *semver.Version
 	// MachineTypes is the list of machine types present in the CloudProfile referenced by the shoot
 	MachineTypes []gardencorev1beta1.MachineType
+	// MachineImages is the list of machine images present in the CloudProfile referenced by the shoot
+	MachineImages []gardencorev1beta1.MachineImage
 	// SSHPublicKey is the public SSH key that shall be installed on the worker nodes.
 	SSHPublicKey []byte
 	// InfrastructureProviderStatus is the provider status of the Infrastructure resource which might be relevant for
@@ -254,6 +256,7 @@ func (w *worker) deploy(ctx context.Context, operation string) (extensionsv1alph
 			Architecture:                     workerPool.Machine.Architecture,
 			ClusterAutoscaler:                autoscalerOptions,
 			Priority:                         workerPool.Priority,
+			SecureBoot:                       workerPool.Machine.Secureboot,
 		})
 	}
 

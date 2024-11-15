@@ -4489,6 +4489,7 @@ func autoConvert_v1beta1_Machine_To_core_Machine(in *Machine, out *core.Machine,
 		out.Image = nil
 	}
 	out.Architecture = (*string)(unsafe.Pointer(in.Architecture))
+	out.Secureboot = (*bool)(unsafe.Pointer(in.Secureboot))
 	return nil
 }
 
@@ -4509,6 +4510,7 @@ func autoConvert_core_Machine_To_v1beta1_Machine(in *core.Machine, out *Machine,
 		out.Image = nil
 	}
 	out.Architecture = (*string)(unsafe.Pointer(in.Architecture))
+	out.Secureboot = (*bool)(unsafe.Pointer(in.Secureboot))
 	return nil
 }
 
@@ -4577,6 +4579,7 @@ func autoConvert_v1beta1_MachineImageVersion_To_core_MachineImageVersion(in *Mac
 	out.Architectures = *(*[]string)(unsafe.Pointer(&in.Architectures))
 	out.KubeletVersionConstraint = (*string)(unsafe.Pointer(in.KubeletVersionConstraint))
 	out.InPlaceUpdates = (*core.InPlaceUpdates)(unsafe.Pointer(in.InPlaceUpdates))
+	out.SecureBoot = (*bool)(unsafe.Pointer(in.SecureBoot))
 	return nil
 }
 
@@ -4593,6 +4596,7 @@ func autoConvert_core_MachineImageVersion_To_v1beta1_MachineImageVersion(in *cor
 	out.Architectures = *(*[]string)(unsafe.Pointer(&in.Architectures))
 	out.KubeletVersionConstraint = (*string)(unsafe.Pointer(in.KubeletVersionConstraint))
 	out.InPlaceUpdates = (*InPlaceUpdates)(unsafe.Pointer(in.InPlaceUpdates))
+	out.SecureBoot = (*bool)(unsafe.Pointer(in.SecureBoot))
 	return nil
 }
 
@@ -4609,6 +4613,7 @@ func autoConvert_v1beta1_MachineType_To_core_MachineType(in *MachineType, out *c
 	out.Storage = (*core.MachineTypeStorage)(unsafe.Pointer(in.Storage))
 	out.Usable = (*bool)(unsafe.Pointer(in.Usable))
 	out.Architecture = (*string)(unsafe.Pointer(in.Architecture))
+	out.SecureBoot = (*bool)(unsafe.Pointer(in.SecureBoot))
 	return nil
 }
 
@@ -4625,6 +4630,7 @@ func autoConvert_core_MachineType_To_v1beta1_MachineType(in *core.MachineType, o
 	out.Storage = (*MachineTypeStorage)(unsafe.Pointer(in.Storage))
 	out.Usable = (*bool)(unsafe.Pointer(in.Usable))
 	out.Architecture = (*string)(unsafe.Pointer(in.Architecture))
+	out.SecureBoot = (*bool)(unsafe.Pointer(in.SecureBoot))
 	return nil
 }
 

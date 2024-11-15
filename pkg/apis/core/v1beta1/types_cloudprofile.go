@@ -137,6 +137,10 @@ type MachineImageVersion struct {
 	// InPlaceUpdates contains the configuration for in-place updates for this machine image version.
 	// +optional
 	InPlaceUpdates *InPlaceUpdates `json:"inPlaceUpdates,omitempty" protobuf:"bytes,5,opt,name=inPlaceUpdates"`
+	// SecureBoot specifies if a MachineImageVersion offers secure boot enabled images
+	// HACK: this is a hack to substitute MachineImageCapabilities (GEP-33)
+	// +optional
+	SecureBoot *bool `json:"secureBoot,omitempty" protobuf:"varint,6,opt,name=secureBoot"`
 }
 
 // ExpirableVersion contains a version and an expiration date.
@@ -170,6 +174,10 @@ type MachineType struct {
 	// Architecture is the CPU architecture of this machine type.
 	// +optional
 	Architecture *string `json:"architecture,omitempty" protobuf:"bytes,7,opt,name=architecture"`
+	// SecureBoot specifies if a MachineType is secure boot enabled.
+	// HACK: this is a hack to substitute MachineImageCapabilities (GEP-33)
+	// +optional
+	SecureBoot *bool `json:"secureBoot,omitempty" protobuf:"varint,8,opt,name=secureBoot"`
 }
 
 // MachineTypeStorage is the amount of storage associated with the root volume of this machine type.

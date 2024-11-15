@@ -2100,6 +2100,11 @@ func (in *WorkerPool) DeepCopyInto(out *WorkerPool) {
 		*out = new(v1beta1.MachineUpdateStrategy)
 		**out = **in
 	}
+	if in.SecureBoot != nil {
+		in, out := &in.SecureBoot, &out.SecureBoot
+		*out = new(bool)
+		**out = **in
+	}
 	return
 }
 

@@ -90,6 +90,7 @@ var _ = Describe("Worker", func() {
 		worker1Zone1                          = "worker1zone1"
 		worker1Zone2                          = "worker1zone1"
 		worker1Arch                           = ptr.To("amd64")
+		worker1SecureBoot                     = ptr.To(false)
 
 		worker2Name                      = "worker2"
 		worker2Minimum             int32 = 5
@@ -103,6 +104,7 @@ var _ = Describe("Worker", func() {
 		worker2UserDataKeyName           = "user-data-key-name-w2"
 		worker2UserDataSecretName        = "user-data-secret-name-w2"
 		worker2Arch                      = ptr.To("arm64")
+		worker2SecureBoot                = ptr.To(true)
 
 		machineTypes = []gardencorev1beta1.MachineType{
 			{
@@ -195,6 +197,7 @@ var _ = Describe("Worker", func() {
 							Version: &worker1MachineImageVersion,
 						},
 						Architecture: worker1Arch,
+						Secureboot:   worker1SecureBoot,
 					},
 					Volume: &gardencorev1beta1.Volume{
 						Name:       &worker1VolumeName,
@@ -235,6 +238,7 @@ var _ = Describe("Worker", func() {
 							Version: &worker2MachineImageVersion,
 						},
 						Architecture: worker2Arch,
+						Secureboot:   worker2SecureBoot,
 					},
 					Kubernetes: &gardencorev1beta1.WorkerKubernetes{
 						Version: &workerKubernetesVersion,
@@ -314,6 +318,7 @@ var _ = Describe("Worker", func() {
 					MachineControllerManagerSettings: worker1MCMSettings,
 					NodeTemplate:                     workerPool1NodeTemplate,
 					Architecture:                     worker1Arch,
+					SecureBoot:                       worker1SecureBoot,
 					ClusterAutoscaler:                emptyAutoscalerOptions,
 				},
 				{
@@ -341,6 +346,7 @@ var _ = Describe("Worker", func() {
 					UserDataSecretRef: corev1.SecretKeySelector{LocalObjectReference: corev1.LocalObjectReference{Name: worker2UserDataSecretName}, Key: "cloud_config"},
 					NodeTemplate:      workerPool2NodeTemplate,
 					Architecture:      worker2Arch,
+					SecureBoot:        worker2SecureBoot,
 					ClusterAutoscaler: emptyAutoscalerOptions,
 				},
 			},

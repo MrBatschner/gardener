@@ -1326,6 +1326,8 @@ type Machine struct {
 	Image *ShootMachineImage
 	// Architecture is the CPU architecture of the machines in this worker pool.
 	Architecture *string
+	// Secureboot boots the machine in Secureboot mode
+	Secureboot *bool
 }
 
 // ShootMachineImage defines the name and the version of the shoot's machine image in any environment. Has to be
