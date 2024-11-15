@@ -110,6 +110,9 @@ type MachineImageVersion struct {
 	KubeletVersionConstraint *string
 	// InPlaceUpdates contains the configuration for in-place updates for this machine image version.
 	InPlaceUpdates *InPlaceUpdates
+	// SecureBoot specifies if a MachineImageVersion offers secure boot enabled images
+	// HACK: this is a hack to substitute MachineImageCapabilities (GEP-33)
+	SecureBoot *bool
 }
 
 // ExpirableVersion contains a version and an expiration date.
@@ -138,6 +141,9 @@ type MachineType struct {
 	Usable *bool
 	// Architecture is the CPU architecture of this machine type.
 	Architecture *string
+	// SecureBoot specifies if a MachineType is secure boot enabled.
+	// HACK: this is a hack to substitute MachineImageCapabilities (GEP-33)
+	SecureBoot *bool
 }
 
 // MachineTypeStorage is the amount of storage associated with the root volume of this machine type.

@@ -70,6 +70,8 @@ type Values struct {
 	KubernetesVersion *semver.Version
 	// MachineTypes is the list of machine types present in the CloudProfile referenced by the shoot
 	MachineTypes []gardencorev1beta1.MachineType
+	// MachineImages is the list of machine images present in the CloudProfile referenced by the shoot
+	MachineImages []gardencorev1beta1.MachineImage
 	// SSHPublicKey is the public SSH key that shall be installed on the worker nodes.
 	SSHPublicKey []byte
 	// InfrastructureProviderStatus is the provider status of the Infrastructure resource which might be relevant for
@@ -224,6 +226,16 @@ func (w *worker) deploy(ctx context.Context, operation string) (extensionsv1alph
 			}
 		}
 
+		var enableSecureBoot bool
+		if m, ok := v1beta1helper.FindMachineImageVersion(w.values.MachineImages, workerPool.Machine.Image.Name, *workerPool.Machine.Image.Version); ok {
+			// FIXME: this is a simple check if secureboot was requested through the Shoot worker config and the machine image is tagged
+			// as supporting secure boot (as a substitute for GEP-33 while it is in its implementation phase)
+			// this check is not sufficient though as it does not check for the MachineType's support for secure boot - once again, GEP-33 territory
+			enableSecureBoot = *workerPool.Machine.Secureboot && *m.SecureBoot
+		} else {
+			enableSecureBoot = false
+		}
+
 		pools = append(pools, extensionsv1alpha1.WorkerPool{
 			Name:           workerPool.Name,
 			Minimum:        workerPool.Minimum,
@@ -255,6 +267,7 @@ func (w *worker) deploy(ctx context.Context, operation string) (extensionsv1alph
 			ClusterAutoscaler:                autoscalerOptions,
 			Priority:                         workerPool.Priority,
 			UpdateStrategy:                   workerPool.UpdateStrategy,
+			SecureBoot:                       &enableSecureBoot,
 		})
 	}
 

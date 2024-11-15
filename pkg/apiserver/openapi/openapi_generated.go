@@ -5428,6 +5428,13 @@ func schema_pkg_apis_core_v1beta1_Machine(ref common.ReferenceCallback) common.O
 							Format:      "",
 						},
 					},
+					"secureboot": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Secureboot boots the machine in Secure boot mode",
+							Type:        []string{"boolean"},
+							Format:      "",
+						},
+					},
 				},
 				Required: []string{"type"},
 			},
@@ -5626,6 +5633,13 @@ func schema_pkg_apis_core_v1beta1_MachineImageVersion(ref common.ReferenceCallba
 							Ref:         ref("github.com/gardener/gardener/pkg/apis/core/v1beta1.InPlaceUpdates"),
 						},
 					},
+					"secureBoot": {
+						SchemaProps: spec.SchemaProps{
+							Description: "SecureBoot specifies if a MachineImageVersion offers secure boot enabled images HACK: this is a hack to substitute MachineImageCapabilities (GEP-33)",
+							Type:        []string{"boolean"},
+							Format:      "",
+						},
+					},
 				},
 				Required: []string{"version"},
 			},
@@ -5685,6 +5699,13 @@ func schema_pkg_apis_core_v1beta1_MachineType(ref common.ReferenceCallback) comm
 						SchemaProps: spec.SchemaProps{
 							Description: "Architecture is the CPU architecture of this machine type.",
 							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"secureBoot": {
+						SchemaProps: spec.SchemaProps{
+							Description: "SecureBoot specifies if a MachineType is secure boot enabled. HACK: this is a hack to substitute MachineImageCapabilities (GEP-33)",
+							Type:        []string{"boolean"},
 							Format:      "",
 						},
 					},

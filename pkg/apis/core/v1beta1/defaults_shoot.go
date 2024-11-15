@@ -53,6 +53,10 @@ func SetDefaults_Shoot(obj *Shoot) {
 			obj.Spec.Provider.Workers[i].Machine.Architecture = ptr.To(v1beta1constants.ArchitectureAMD64)
 		}
 
+		if worker.Machine.Secureboot == nil {
+			obj.Spec.Provider.Workers[i].Machine.Secureboot = ptr.To(false)
+		}
+
 		if worker.CRI == nil {
 			obj.Spec.Provider.Workers[i].CRI = &CRI{Name: CRINameContainerD}
 		}

@@ -3001,6 +3001,11 @@ func (in *Machine) DeepCopyInto(out *Machine) {
 		*out = new(string)
 		**out = **in
 	}
+	if in.Secureboot != nil {
+		in, out := &in.Secureboot, &out.Secureboot
+		*out = new(bool)
+		**out = **in
+	}
 	return
 }
 
@@ -3119,6 +3124,11 @@ func (in *MachineImageVersion) DeepCopyInto(out *MachineImageVersion) {
 		*out = new(InPlaceUpdates)
 		(*in).DeepCopyInto(*out)
 	}
+	if in.SecureBoot != nil {
+		in, out := &in.SecureBoot, &out.SecureBoot
+		*out = new(bool)
+		**out = **in
+	}
 	return
 }
 
@@ -3151,6 +3161,11 @@ func (in *MachineType) DeepCopyInto(out *MachineType) {
 	if in.Architecture != nil {
 		in, out := &in.Architecture, &out.Architecture
 		*out = new(string)
+		**out = **in
+	}
+	if in.SecureBoot != nil {
+		in, out := &in.SecureBoot, &out.SecureBoot
+		*out = new(bool)
 		**out = **in
 	}
 	return

@@ -173,6 +173,9 @@ type WorkerPool struct {
 	// UpdateStrategy specifies the machine update strategy for the worker pool.
 	// +optional
 	UpdateStrategy *gardencorev1beta1.MachineUpdateStrategy `json:"updateStrategy,omitempty"`
+	// SecureBoot specifies if the machines in a worker pool should be booted in secureboot mode
+	// +optional
+	SecureBoot *bool `json:"secureBoot,omitempty"`
 }
 
 // ClusterAutoscalerOptions contains the cluster autoscaler configurations for a worker pool.

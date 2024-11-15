@@ -1738,6 +1738,9 @@ type Machine struct {
 	// Architecture is CPU architecture of machines in this worker pool.
 	// +optional
 	Architecture *string `json:"architecture,omitempty" protobuf:"bytes,3,opt,name=architecture"`
+	// Secureboot boots the machine in Secure boot mode
+	// +optional
+	Secureboot *bool `json:"secureboot,omitempty" protobuf:"varint,4,opt,name=secureboot"`
 }
 
 // ShootMachineImage defines the name and the version of the shoot's machine image in any environment. Has to be

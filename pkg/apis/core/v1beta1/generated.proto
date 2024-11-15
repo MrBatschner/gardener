@@ -1763,6 +1763,10 @@ message Machine {
   // Architecture is CPU architecture of machines in this worker pool.
   // +optional
   optional string architecture = 3;
+
+  // Secureboot boots the machine in Secure boot mode
+  // +optional
+  optional bool secureboot = 4;
 }
 
 // MachineControllerManagerSettings contains configurations for different worker-pools. Eg. MachineDrainTimeout, MachineHealthTimeout.
@@ -1838,6 +1842,11 @@ message MachineImageVersion {
   // InPlaceUpdates contains the configuration for in-place updates for this machine image version.
   // +optional
   optional InPlaceUpdates inPlaceUpdates = 5;
+
+  // SecureBoot specifies if a MachineImageVersion offers secure boot enabled images
+  // HACK: this is a hack to substitute MachineImageCapabilities (GEP-33)
+  // +optional
+  optional bool secureBoot = 6;
 }
 
 // MachineType contains certain properties of a machine type.
@@ -1865,6 +1874,11 @@ message MachineType {
   // Architecture is the CPU architecture of this machine type.
   // +optional
   optional string architecture = 7;
+
+  // SecureBoot specifies if a MachineType is secure boot enabled.
+  // HACK: this is a hack to substitute MachineImageCapabilities (GEP-33)
+  // +optional
+  optional bool secureBoot = 8;
 }
 
 // MachineTypeStorage is the amount of storage associated with the root volume of this machine type.
